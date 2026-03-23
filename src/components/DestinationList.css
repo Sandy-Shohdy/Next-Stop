@@ -1,0 +1,61 @@
+/* DestinationList.css */
+
+/* 1. The Main Grid Container */
+.card-grid {
+  display: grid;
+  /* Creates exactly 3 columns of equal width */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem; /* Spacious gap between travel cards */
+  padding: 3rem 8%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  /* Animation for the whole grid */
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* 2. Responsive Breakpoints */
+
+/* Tablet: 2 columns */
+@media (max-width: 1100px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem 5%;
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 650px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* 3. The "Empty" Message Styling */
+.empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #8b949e;
+  margin-top: 5rem;
+  padding: 2rem;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  font-style: italic;
+}
+
+/* 4. Entrance Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -27,7 +27,7 @@ export default function DestinationCard({
           {visited ? "Mark Unvisited" : "Mark Visited"}
         </button>
         <button onClick={() => onEdit(destination)}>Edit</button>
-        <button onClick={() => onDelete} className="btn-delete">
+        <button onClick={() => onDelete(id)} className="btn-delete">
           Delete
         </button>
         <Link to={`/destination/${id}`} className="btn-details">
