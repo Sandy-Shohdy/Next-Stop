@@ -9,8 +9,8 @@ export default function Header() {
       <div className="left-section">
         <nav className="Nav-Bar">
           <NavLink to="/">Home</NavLink>
+          <NavLink to="/visited">Visited</NavLink>
           <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
         </nav>
       </div>
     </div>

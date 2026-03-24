@@ -1,7 +1,6 @@
 
-/* 1. The Card Container */
 .card {
-  background: rgba(22, 27, 34, 0.8);
+  background: rgba(31, 41, 56, 0.8);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
@@ -14,7 +13,6 @@
   overflow: hidden;
 }
 
-/* Hover: Lift and Glow */
 .card:hover {
   transform: translateY(-8px);
   border-color: var(--accent-neon, #58a6ff);
@@ -23,7 +21,6 @@
     0 0 15px rgba(88, 166, 255, 0.1);
 }
 
-/* 2. Card Header Layout */
 .card-header {
   display: flex;
   align-items: center;
@@ -49,7 +46,6 @@
   letter-spacing: 1px;
 }
 
-/* 3. Visited Badge (Stamps look) */
 .visited-badge {
   margin-left: auto;
   font-size: 0.75rem;
@@ -62,7 +58,6 @@
   text-transform: uppercase;
 }
 
-/* 4. Notes Section */
 .card-notes {
   font-size: 0.95rem;
   color: #c9d1d9;
@@ -72,11 +67,10 @@
   border-left: 2px solid rgba(88, 166, 255, 0.3);
 }
 
-/* 5. Action Buttons Grid */
 .card-actions {
-  margin-top: auto; /* Pushes buttons to bottom */
+  margin-top: auto; 
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2x2 grid */
+  grid-template-columns: 1fr 1fr; 
   gap: 0.6rem;
 }
 
@@ -99,14 +93,13 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* Delete Button Specifics */
+
 .btn-delete:hover {
   background: rgba(248, 81, 73, 0.15) !important;
   color: #f85149 !important;
   border-color: #f85149 !important;
 }
 
-/* Details Button (The Call to Action) */
 .btn-details {
   background: linear-gradient(135deg, #58a6ff, #bc85ff);
   border: none;
@@ -117,9 +110,7 @@
   box-shadow: 0 4px 12px rgba(188, 133, 255, 0.3);
 }
 
-/* --- RESPONSIVE LAYOUT --- */
 
-/* For small screens: Buttons stack vertically */
 @media (max-width: 480px) {
   .card-actions {
     grid-template-columns: 1fr;

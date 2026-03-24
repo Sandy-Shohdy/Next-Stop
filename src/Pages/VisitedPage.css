@@ -1,0 +1,103 @@
+/* Base Layout */
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 8%;
+}
+
+.visited-page {
+  padding: 2rem;
+}
+
+/* Headings */
+.page h2,
+.visited-page h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f0f6fc;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Visited Page Header Layout */
+.visited-page h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 1.5rem;
+}
+
+/* Empty State */
+.visited-page .empty {
+  color: #8b949e;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+/* ---------------------- */
+/* 📱 Tablet (≤ 992px) */
+/* ---------------------- */
+@media (max-width: 992px) {
+  .page {
+    padding: 0 5%;
+  }
+
+  .visited-page {
+    padding: 1.5rem;
+  }
+
+  .page h2,
+  .visited-page h2 {
+    font-size: 1.7rem;
+  }
+}
+
+/* ---------------------- */
+/* 📱 Mobile (≤ 600px) */
+/* ---------------------- */
+@media (max-width: 600px) {
+  .page {
+    padding: 0 4%;
+  }
+
+  .visited-page {
+    padding: 1rem;
+  }
+
+  /* Stack header instead of row */
+  .visited-page h2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .page h2 {
+    font-size: 1.5rem;
+  }
+
+  .visited-page .empty {
+    font-size: 1rem;
+  }
+}
+
+/* ---------------------- */
+/* 📱 Small phones (≤ 400px) */
+/* ---------------------- */
+@media (max-width: 600px) {
+  .visited-page h2 {
+    flex-direction: column;
+    align-items: center; /* centers horizontally */
+    justify-content: center;
+    text-align: center; /* centers the text */
+    gap: 0.5rem;
+  }
+
+  .page h2 {
+    text-align: center;
+  }
+}

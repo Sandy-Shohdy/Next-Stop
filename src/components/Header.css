@@ -89,7 +89,6 @@ textarea:not([rows]) {
   scroll-margin-block: 5ex;
 }
 
-/* Header.css */
 :root {
   --bg-dark: rgba(13, 17, 23, 0.9);
   --text-main: #f0f6fc;
@@ -98,7 +97,6 @@ textarea:not([rows]) {
   --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-/* Base Desktop Layout */
 .header {
   display: flex;
   justify-content: space-between;
@@ -119,7 +117,7 @@ textarea:not([rows]) {
   color: var(--text-main);
   letter-spacing: -0.5px;
   cursor: pointer;
-  white-space: nowrap; /* Prevents logo from wrapping */
+  white-space: nowrap;
 }
 
 .Nav-Bar {
@@ -148,37 +146,41 @@ textarea:not([rows]) {
   box-shadow: 0 4px 15px rgba(188, 133, 255, 0.3);
 }
 
-/* --- RESPONSIVE MOBILE BREAKPOINT --- */
 @media (max-width: 768px) {
   .header {
-    flex-direction: column; /* Stacks logo on top, menu below */
+    flex-direction: column;
     gap: 1.2rem;
-    padding: 1rem 5%;
+    padding: 1.5rem 5%;
     align-items: center;
+    text-align: center;
   }
 
   .left-section {
     width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
-  /* Turns menu into a smooth, horizontal scrolling strip on phones */
   .Nav-Bar {
-    width: 100%;
-    justify-content: flex-start;
+    width: auto;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     overflow-x: auto;
-    padding-bottom: 5px; /* prevents shadow clipping */
-
-    /* Hide scrollbar for Chrome/Safari/Opera */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    padding-bottom: 5px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   .Nav-Bar::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none;
   }
 
   .Nav-Bar a {
-    padding: 0.5rem 1rem;
-    font-size: 0.95rem;
-  }
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+    white-space: nowrap; 
+}
 }

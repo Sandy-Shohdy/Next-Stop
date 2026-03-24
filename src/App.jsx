@@ -4,6 +4,7 @@ import "./App.css";
 import InitialDes from "./InitialDestination.js";
 import { useState } from "react";
 import Header from "./components/Header.jsx";
+import VisitedPage from "./Pages/VisitedPage.jsx";
 
 export default function App() {
   const [destinations, setDestinations] = useState(InitialDes);
@@ -36,6 +37,17 @@ export default function App() {
             path="/"
             element={
               <HomePage
+                destinations={destinations}
+                onEdit={handleEdit}
+                onDelete={handleDelete}
+                onToggleVisited={handleToggleVisited}
+              />
+            }
+          />
+          <Route
+            path="/visited"
+            element={
+              <VisitedPage
                 destinations={destinations}
                 onEdit={handleEdit}
                 onDelete={handleDelete}
