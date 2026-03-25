@@ -25,11 +25,11 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
     }
 
     const newDestination = {
-      id: Date.now().toString(),
+      id: editingItem ? editingItem.id : Date.now().toString(),
       name: name.trim(),
       notes: notes.trim(),
       country: selectedCountry || null,
-      visited: false,
+      visited: editingItem ? editingItem.visited : false,
     };
     onSubmit(newDestination);
   }
@@ -50,12 +50,12 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
       setSuggestions(
         data.slice(0, 5).map((c) => ({
           name: c.name.common,
-          flag: c.flags?.emoji || "🏳️",
+          flag: c.flags?.emoji,
           capital: c.capital?.[0] || "",
           region: c.region || "",
         })),
       );
-    } catch {
+    } catch { 
       setSuggestions([]);
     }
   }

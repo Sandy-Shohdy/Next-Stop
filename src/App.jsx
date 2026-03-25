@@ -4,6 +4,7 @@ import InitialDes from "./InitialDestination.js";
 import React from "react";
 import Header from "./components/Header.jsx";
 import VisitedPage from "./Pages/VisitedPage.jsx";
+import AboutPage from "./Pages/AboutPage.jsx";
 
 export default function App() {
   const [destinations, setDestinations] = React.useState(InitialDes);
@@ -58,6 +59,8 @@ export default function App() {
               />
             }
           />
+
+          <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
     </>

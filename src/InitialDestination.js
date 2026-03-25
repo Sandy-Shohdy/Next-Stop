@@ -30,4 +30,41 @@ export default [
     notes: "Northern lights!",
     visited: true,
   },
+
+  {
+    id: "4",
+    name: "Barcelona",
+    country: {
+      name: "Spain",
+      flag: "🇪🇸",
+      capital: "Madrid",
+      region: "Europe",
+    },
+    notes: "Gaudí architecture and beaches",
+    visited: true,
+  },
+  {
+    id: "5",
+    name: "Cape Town",
+    country: {
+      name: "South Africa",
+      flag: "🇿🇦",
+      capital: "Pretoria",
+      region: "Africa",
+    },
+    notes: "Table Mountain and ocean views",
+    visited: false,
+  },
+  {
+    id: "6",
+    name: "Cairo",
+    country: {
+      name: "Egypt",
+      flag: "🇪🇬",
+      capital: "Cairo",
+      region: "Africa",
+    },
+    notes: "Pyramids and the Nile River",
+    visited: false,
+  },
 ];

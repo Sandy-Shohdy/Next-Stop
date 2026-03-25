@@ -12,7 +12,8 @@ export function HomePage({
   onToggleVisited,
 }) {
   const [showForm, setShowForm] = React.useState(false);
-  const [editingItem, setEditingItem] = React.useState(null);
+  const [editingItem, setEditingItem] = React.useState(null); 
+  const [filter, setFilter] = React.useState("all");
 
   function handleSubmit(des) {
     if (editingItem) {
@@ -35,7 +36,6 @@ export function HomePage({
     setEditingItem(null);
   }
 
-  const [filter, setFilter] = React.useState("all");
   const filtered = destinations.filter((des) => {
     if (filter === "visited") return des.visited === true;
     if (filter === "unvisited") return des.visited === false;
@@ -80,7 +80,7 @@ export function HomePage({
         onDelete={onDelete}
         onToggleVisited={onToggleVisited}
       />
-      {setShowForm && (
+      {showForm && (
         <DestinationForm
           onSubmit={handleSubmit}
           onCancel={handleCancel}
