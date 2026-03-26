@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import "./DestinationCard.css";
 
 export default function DestinationCard({

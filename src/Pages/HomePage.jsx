@@ -12,7 +12,7 @@ export function HomePage({
   onToggleVisited,
 }) {
   const [showForm, setShowForm] = React.useState(false);
-  const [editingItem, setEditingItem] = React.useState(null); 
+  const [editingItem, setEditingItem] = React.useState(null);
   const [filter, setFilter] = React.useState("all");
 
   function handleSubmit(des) {
@@ -43,7 +43,7 @@ export function HomePage({
   });
 
   return (
-    <main>
+    <div>
       <div className="page">
         <div className="page-top">
           <h2>My Destinations</h2>
@@ -87,6 +87,6 @@ export function HomePage({
           editingItem={editingItem}
         />
       )}
-    </main>
+    </div>
   );
 }

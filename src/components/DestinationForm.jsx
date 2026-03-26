@@ -37,7 +37,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
   async function handleCountrySearch(value) {
     setCountryInput(value);
     setSelectedCountry(null);
-    if (value.trim().length < 2) {
+    if (value.trim().length < 1) {
       setSuggestions([]);
       return;
     }
@@ -55,7 +55,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
           region: c.region || "",
         })),
       );
-    } catch { 
+    } catch {
       setSuggestions([]);
     }
   }
@@ -102,11 +102,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
             {suggestions.length > 0 && (
               <ul>
                 {suggestions.map((c) => (
-                  <li
-                    key={c.name}
-                    onClick={() => pickCountry(c)}
-                    style={{ cursor: "pointer" }}
-                  >
+                  <li key={c.name} onClick={() => pickCountry(c)}>
                     {c.flag} {c.name}
                   </li>
                 ))}
