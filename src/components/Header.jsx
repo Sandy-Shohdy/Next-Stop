@@ -5,7 +5,7 @@ import "../global.css";
 export default function Header() {
   return (
     <div className="header">
-      <span className="navbar-logo">✈️ Travel Bucket List</span>
+      <span className="navbar-logo">✈️ Next-Stop</span>
 
       <div className="left-section">
         <nav className="Nav-Bar">
