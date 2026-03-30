@@ -4,8 +4,11 @@ export default function AboutPage() {
   return (
     <div className="about-page">
       <div className="about-hero">
-        <h1>✈️ Travel Bucket List</h1>
-        <p>Your personal travel companion — track the places you dream of visiting and the ones you've already explored.</p>
+        <h1>✈️ Next-Stop</h1>
+        <p>
+          Your personal travel companion — track the places you dream of
+          visiting and the ones you've already explored.
+        </p>
       </div>
 
       <div className="about-grid">
@@ -15,7 +18,6 @@ export default function AboutPage() {
             <li>React</li>
             <li>React Router</li>
             <li>RestCountries API</li>
-            <li>Wikipedia API</li>
             <li>Vite</li>
           </ul>
         </div>

@@ -62,7 +62,7 @@ export default function App() {
     setAlert(message);
     setTimeout(() => {
       setAlert(null);
-    }, 1000);
+    }, 2000);
   }
 
   function handleAdd(newDestination) {

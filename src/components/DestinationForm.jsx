@@ -52,7 +52,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
       );
       const data = await res.json();
       setSuggestions(
-        data.slice(0, 5).map((c) => ({
+        data.slice(0, 7).map((c) => ({
           name: c.name.common,
 
           capital: c.capital?.[0] || "",
@@ -97,7 +97,6 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onCancel]);
 
-  
   return (
     <div className="modal-overlay" onClick={onCancel}>
       {" "}
@@ -169,7 +168,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
             <button type="submit" className="btn-submit">
               {editingItem ? "Save" : "Add"}
             </button>
-          </div>  
+          </div>
         </form>
       </div>
     </div>
