@@ -15,15 +15,15 @@ export function HomePage({
   const [editingItem, setEditingItem] = React.useState(null);
   const [filter, setFilter] = React.useState("all");
 
-  function handleSubmit(des) {
-    editingItem ? onEdit(des) : onAdd(des);
+  function handleSubmit(destination) {
+    editingItem ? onEdit(destination) : onAdd(destination);
 
     setShowForm(false);
     setEditingItem(null);
   }
 
-  function handleEdit(des) {
-    setEditingItem(des);
+  function handleEdit(destination) {
+    setEditingItem(destination);
     setShowForm(true);
   }
 
@@ -32,19 +32,19 @@ export function HomePage({
     setEditingItem(null);
   }
 
-  const filtered = destinations.filter((des) => {
-    if (filter === "visited") return des.visited === true;
-    if (filter === "unvisited") return des.visited === false;
+  const filtered = destinations.filter((destination) => {
+    if (filter === "visited") return destination.visited === true;
+    if (filter === "unvisited") return destination.visited === false;
     return true;
   });
 
   return (
     <div>
-        <div className="page-top">
-          <h2>My Destinations</h2>
-          <button className="btn-primary" onClick={() => setShowForm(true)}>
-            + Add
-          </button>
+      <div className="page-top">
+        <h2>My Destinations</h2>
+        <button className="btn-primary" onClick={() => setShowForm(true)}>
+          + Add
+        </button>
       </div>
 
       <div className="filters">

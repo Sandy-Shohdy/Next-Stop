@@ -39,6 +39,6 @@ export default function DestinationCard({
           </p>
         )}
       </div>
-    </div>  
+    </div>
   );
 }

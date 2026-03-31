@@ -30,21 +30,23 @@ export default function App() {
           ),
         );
 
-        const initial = results.map((countryData, index) => {
-          const country = countryData[0];
-          if (!country) return null;
-          return {
-            id: (index + 1).toString(),
-            name: country.capital[0],
-            country: {
-              name: country.name.common,
-              capital: country.capital[0],
-              region: country.region,
-            },
-            notes: "",
-            visited: false,
-          };
-        });
+        const initial = results
+          .map((countryData, index) => {
+            const country = countryData[0];
+            if (!country) return null;
+            return {
+              id: (index + 1).toString(),
+              name: country.capital[0],
+              country: {
+                name: country.name.common,
+                capital: country.capital[0],
+                region: country.region,
+              },
+              notes: "",
+              visited: false,
+            };
+          })
+          .filter(Boolean);
 
         setDestinations(initial);
       } catch (error) {
@@ -65,28 +67,26 @@ export default function App() {
     }, 2000);
   }
 
-  function handleAdd(newDestination) {
-    setDestinations((prev) => [newDestination, ...prev]);
+  function handleAdd(destination) {
+    setDestinations((prev) => [destination, ...prev]);
     showAlert("Destination added!");
   }
 
   function handleEdit(updated) {
     setDestinations((prev) =>
-      prev.map((des) => (des.id === updated.id ? updated : des)),
+      prev.map((d) => (d.id === updated.id ? updated : d)),
     );
     showAlert("Destination updated!");
   }
 
   function handleDelete(id) {
-    setDestinations((prev) => prev.filter((des) => des.id !== id));
+    setDestinations((prev) => prev.filter((d) => d.id !== id));
     showAlert("Destination deleted!");
   }
 
   function handleToggleVisited(id) {
     setDestinations((prev) =>
-      prev.map((des) =>
-        des.id === id ? { ...des, visited: !des.visited } : des,
-      ),
+      prev.map((d) => (d.id === id ? { ...d, visited: !d.visited } : d)),
     );
   }
 

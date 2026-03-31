@@ -26,7 +26,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
       return;
     }
 
-    const newDestination = {
+    const destination = {
       id: editingItem ? editingItem.id : Date.now().toString(),
       name: name.trim(),
       notes: notes.trim(),
@@ -35,7 +35,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
       dateFrom,
       dateTo,
     };
-    onSubmit(newDestination);
+    onSubmit(destination);
   }
 
   async function handleCountrySearch(value) {

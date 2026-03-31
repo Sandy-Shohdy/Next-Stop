@@ -8,7 +8,7 @@ export default function VisitedPage({
   onToggleVisited,
 }) {
   const visitedDestinations = destinations.filter(
-    (des) => des.visited === true,
+    (destination) => destination.visited === true,
   );
 
   return (
@@ -20,10 +20,10 @@ export default function VisitedPage({
         <p className="empty">No visited places yet!</p>
       ) : (
         <div className="card-grid">
-          {visitedDestinations.map((des) => (
+          {visitedDestinations.map((destination) => (
             <DestinationCard
-              key={des.id}
-              destination={des}
+              key={destination.id}
+              destination={destination}
               onEdit={onEdit}
               onDelete={onDelete}
               onToggleVisited={onToggleVisited}
