@@ -8,8 +8,8 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
   const [countryInput, setCountryInput] = React.useState("");
   const [suggestions, setSuggestions] = React.useState([]);
   const [selectedCountry, setSelectedCountry] = React.useState(null);
-  const [dateFrom, setDateFrom] = React.useState();
-  const [dateTo, setDateTo] = React.useState();
+  const [dateFrom, setDateFrom] = React.useState("");
+  const [dateTo, setDateTo] = React.useState("");
 
   function validate() {
     const errs = {};
