@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./DestinationForm.css";
 
 export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
@@ -13,7 +13,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
 
   function validate() {
     const errs = {};
-    if (!name.trim()) errs.name = "Name is required";
+    if (!name.trim()) errs.name = "Destination's Name is required";
     return errs;
   }
 
@@ -54,7 +54,6 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
       setSuggestions(
         data.slice(0, 7).map((c) => ({
           name: c.name.common,
-
           capital: c.capital?.[0] || "",
           region: c.region || "",
         })),
@@ -70,7 +69,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
     setSuggestions([]);
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (editingItem) {
       setName(editingItem.name);
       setNotes(editingItem.notes || "");
@@ -89,7 +88,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
     }
   }, [editingItem]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") onCancel();
     };
