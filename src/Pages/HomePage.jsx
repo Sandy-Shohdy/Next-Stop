@@ -39,32 +39,32 @@ export function HomePage({
   });
 
   return (
-    <div>
-      <div className="page-top">
-        <h2>My Destinations</h2>
+    <div className="home-page">
+      <h2 className="all-destinations">My Destinations</h2>
+
+      <div className="top-bar">
+        <div className="filters">
+          <button
+            className={filter === "all" ? "active" : ""}
+            onClick={() => setFilter("all")}
+          >
+            All
+          </button>
+          <button
+            className={filter === "unvisited" ? "active" : ""}
+            onClick={() => setFilter("unvisited")}
+          >
+            Want to Visit
+          </button>
+          <button
+            className={filter === "visited" ? "active" : ""}
+            onClick={() => setFilter("visited")}
+          >
+            Visited
+          </button>
+        </div>
         <button className="btn-primary" onClick={() => setShowForm(true)}>
           + Add
-        </button>
-      </div>
-
-      <div className="filters">
-        <button
-          className={filter === "all" ? "active" : ""}
-          onClick={() => setFilter("all")}
-        >
-          All
-        </button>
-        <button
-          className={filter === "unvisited" ? "active" : ""}
-          onClick={() => setFilter("unvisited")}
-        >
-          Want to Visit
-        </button>
-        <button
-          className={filter === "visited" ? "active" : ""}
-          onClick={() => setFilter("visited")}
-        >
-          Visited
         </button>
       </div>
 

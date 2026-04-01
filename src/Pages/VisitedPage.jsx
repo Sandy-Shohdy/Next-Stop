@@ -13,9 +13,7 @@ export default function VisitedPage({
 
   return (
     <div className="visited-page">
-      <div className="page-top">
-        <h2>Visited Destinations</h2>
-      </div>
+      <h2 className="page-top">Visited Destinations</h2>
       {visitedDestinations.length === 0 ? (
         <p className="empty">No visited places yet!</p>
       ) : (
