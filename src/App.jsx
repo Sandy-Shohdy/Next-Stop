@@ -7,11 +7,25 @@ import AboutPage from "./Pages/AboutPage.jsx";
 import "./global.css";
 
 export default function App() {
-  const [destinations, setDestinations] = React.useState([]);
+  const [destinations, setDestinations] = React.useState(() => {
+    const saved = localStorage.getItem("destinations");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [loading, setLoading] = React.useState(true);
   const [alert, setAlert] = React.useState(null);
 
   React.useEffect(() => {
+    localStorage.setItem("destinations", JSON.stringify(destinations));
+  }, [destinations]);
+
+  React.useEffect(() => {
+    const saved = localStorage.getItem("destinations");
+    if (saved && JSON.parse(saved).length > 0) {
+      setLoading(false);
+      return;
+    }
+
     const fetchInitialDestinations = async () => {
       try {
         const starterCountries = [
