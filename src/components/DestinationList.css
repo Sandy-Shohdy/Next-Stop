@@ -24,19 +24,7 @@
   }
 }
 
-.empty {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #8b949e;
-  margin-top: 5rem;
-  padding: 2rem;
-  border: 2px dashed rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-  font-style: italic;
-}
+
 
 @keyframes fadeIn {
   from {
