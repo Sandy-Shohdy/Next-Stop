@@ -1,3 +1,4 @@
+// REVIEW: Imports from "react-router" but main.jsx imports from "react-router-dom". Be consistent — use "react-router-dom" everywhere.
 import { Routes, Route } from "react-router";
 import { HomePage } from "./Pages/HomePage";
 import React from "react";
@@ -8,6 +9,7 @@ import "./global.css";
 
 export default function App() {
   const [destinations, setDestinations] = React.useState(() => {
+    // REVIEW: No try/catch around JSON.parse — if localStorage data is corrupted this will crash the app.
     const saved = localStorage.getItem("destinations");
     return saved ? JSON.parse(saved) : [];
   });
@@ -19,6 +21,7 @@ export default function App() {
     localStorage.setItem("destinations", JSON.stringify(destinations));
   }, [destinations]);
 
+  // REVIEW: This useEffect reads localStorage again, but the useState initializer above already loaded that data. This is redundant and causes a double-parse.
   React.useEffect(() => {
     const saved = localStorage.getItem("destinations");
     if (saved && JSON.parse(saved).length > 0) {
@@ -50,6 +53,7 @@ export default function App() {
             if (!country) return null;
             return {
               id: (index + 1).toString(),
+              // REVIEW: country.capital could be undefined or empty for some countries (e.g. territories). This will crash with "Cannot read properties of undefined".
               name: country.capital[0],
               country: {
                 name: country.name.common,

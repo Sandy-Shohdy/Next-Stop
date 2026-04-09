@@ -1,6 +1,7 @@
 import "./DestinationCard.css";
 import React from "react";
 
+// REVIEW: API key is hardcoded and exposed in client-side code. This is a security risk — anyone can see and abuse this key. Move it to an environment variable (e.g. import.meta.env.VITE_UNSPLASH_KEY).
 const UNSPLASH_KEY = "lF-30YwQgDHEoRbf18wtS5oIp98mXejXn6BUVnA8Lro";
 
 export default function DestinationCard({
@@ -19,6 +20,7 @@ export default function DestinationCard({
           `https://api.unsplash.com/search/photos?query=${name}&client_id=${UNSPLASH_KEY}&per_page=1`,
         );
         const data = await res.json();
+        // REVIEW: No guard for data.results — if the API returns an error object (e.g. rate-limited), data.results will be undefined and .length will throw.
         if (data.results.length > 0) {
           setPhoto(data.results[0].urls.regular);
         }
@@ -34,6 +36,7 @@ export default function DestinationCard({
   }
   return (
     <div className="card">
+      {/* REVIEW: No loading state or placeholder for the image. The card layout will shift when the image loads (Cumulative Layout Shift issue). */}
       {photo && <img src={photo} alt={name} className="card-image" />}
       <div className="card-header">
         <span className="card-flag"> 🌍 </span>

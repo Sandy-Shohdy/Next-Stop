@@ -113,5 +113,6 @@ main {
   font-size: 0.95rem;
   z-index: 9999;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  /* REVIEW: References @keyframes slideUp but that animation is never defined anywhere in the project. The alert will not animate. */
   animation: slideUp 0.3s ease;
 }

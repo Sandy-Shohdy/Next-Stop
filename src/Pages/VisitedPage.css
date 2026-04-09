@@ -13,6 +13,7 @@
   }
 }
 
+/* REVIEW: Same issues as .all-destinations in HomePage.css — text-align is duplicated, margin-bottom: 2rem is overridden by margin: 0, and align-items has no effect on a non-flex element. This block is nearly identical to .all-destinations and should be shared via a common class. */
 .page-top {
   max-width: 1400px;
   align-items: center;
@@ -29,6 +30,7 @@
 }
 
 @media (max-width: 768px) {
+  /* REVIEW: flex-direction and gap have no effect here because .page-top is not a flex container — it's an h2 element. */
   .page-top {
     flex-direction: column;
     align-items: center;

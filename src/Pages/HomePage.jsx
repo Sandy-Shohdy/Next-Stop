@@ -2,6 +2,7 @@ import DestinationList from "../components/DestinationList";
 import DestinationForm from "../components/DestinationForm";
 import React from "react";
 import "./HomePage.css";
+// REVIEW: global.css is already imported in App.jsx. This duplicate import is unnecessary — remove it.
 import "../global.css";
 
 export function HomePage({

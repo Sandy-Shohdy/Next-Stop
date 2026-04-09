@@ -11,6 +11,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
   const [dateFrom, setDateFrom] = React.useState("");
   const [dateTo, setDateTo] = React.useState("");
 
+  // REVIEW: Validation only checks the name field. Country, dates, and date-range logic (dateTo should not be before dateFrom) are not validated at all.
   function validate() {
     const errs = {};
     if (!name.trim()) errs.name = "Destination's Name is required";
@@ -38,6 +39,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
     onSubmit(destination);
   }
 
+  // REVIEW: No debounce — this fires an API request on every keystroke. Should debounce (e.g. 300ms) to avoid hammering the API and potential rate-limiting.
   async function handleCountrySearch(value) {
     setCountryInput(value);
     setSelectedCountry(null);
@@ -75,6 +77,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
       setNotes(editingItem.notes || "");
       setCountryInput(editingItem.country?.name || "");
       setSelectedCountry(editingItem.country || null);
+      // REVIEW: editingItem.dateFrom and editingItem.dateTo may be undefined (older items created without dates). Passing undefined to a controlled input causes a React warning. Use fallback: editingItem.dateFrom || ""
       setDateFrom(editingItem.dateFrom);
       setDateTo(editingItem.dateTo);
     } else {
@@ -97,6 +100,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
   }, [onCancel]);
 
   return (
+    // REVIEW: Stray {" "} whitespace node between overlay and modal div — appears to be leftover from formatting. Remove it.
     <div className="modal-overlay" onClick={onCancel}>
       {" "}
       <div className="modal" onClick={(e) => e.stopPropagation()}>

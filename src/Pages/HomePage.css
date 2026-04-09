@@ -12,6 +12,7 @@
     padding: 1rem;
   }
 }
+/* REVIEW: text-align is declared twice (duplicate). margin-bottom: 2rem on line 19 is overridden by margin: 0 on line 25 — the bottom margin is lost. align-items has no effect here since this is not a flex/grid container. */
 .all-destinations {
   max-width: 1400px;
   align-items: center;
