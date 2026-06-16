@@ -1,6 +1,8 @@
 import React from "react";
 import "./DestinationForm.css";
 
+const COUNTRY_KEY = import.meta.env.VITE_COUNTRY_API_KEY;
+
 export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
   const [name, setName] = React.useState("");
   const [notes, setNotes] = React.useState("");
@@ -41,6 +43,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
   async function handleCountrySearch(value) {
     setCountryInput(value);
     setSelectedCountry(null);
+
     if (value.trim().length < 1) {
       setSuggestions([]);
       return;
@@ -48,17 +51,29 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
 
     try {
       const res = await fetch(
-        `https://restcountries.com/v3.1/name/${value}?fields=name,capital,region`,
+        `https://api.first.org/data/v1/countries?q=${encodeURIComponent(value)}`,
       );
-      const data = await res.json();
+
+      if (!res.ok) {
+        console.error(`API Error: ${res.status}`);
+        setSuggestions([]);
+        return;
+      }
+
+      const json = await res.json();
+      const data = json.data || [];
+
       setSuggestions(
-        data.slice(0, 7).map((c) => ({
-          name: c.name.common,
-          capital: c.capital?.[0] || "",
-          region: c.region || "",
-        })),
+        Object.values(data)
+          .slice(0, 7)
+          .map((c) => ({
+            name: c.country || "",
+            capital: "",
+            region: "",
+          })),
       );
-    } catch {
+    } catch (error) {
+      console.error("Country search failed:", error);
       setSuggestions([]);
     }
   }
@@ -98,7 +113,6 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
 
   return (
     <div className="modal-overlay" onClick={onCancel}>
-      {" "}
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <h2>{editingItem ? "Edit Destination" : "Add Destination"}</h2>
         <form onSubmit={handleSubmit}>

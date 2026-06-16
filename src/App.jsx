@@ -26,6 +26,37 @@ export default function App() {
       return;
     }
 
+    async function fetchCountryData(countryName) {
+      try {
+        const res = await fetch(
+          `https://api.first.org/data/v1/countries?q=${encodeURIComponent(countryName)}`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+            },
+          },
+        );
+
+        if (!res.ok) {
+          console.warn(`Failed to fetch ${countryName}: ${res.status}`);
+          return null;
+        }
+
+        const json = await res.json();
+        if (!json.data || Object.keys(json.data).length === 0) {
+          return null;
+        }
+
+        // Get the first country from the results
+        const firstCountry = Object.values(json.data)[0];
+        return firstCountry;
+      } catch (error) {
+        console.warn(`Error fetching ${countryName}:`, error?.message || error);
+        return null;
+      }
+    }
+
     const fetchInitialDestinations = async () => {
       try {
         const starterCountries = [
@@ -37,27 +68,25 @@ export default function App() {
         ];
 
         const results = await Promise.all(
-          starterCountries.map((country) =>
-            fetch(
-              `https://restcountries.com/v3.1/name/${country}?fields=name,capital,region`,
-            ).then((response) => response.json()),
-          ),
+          starterCountries.map((c) => fetchCountryData(c)),
         );
 
         const initial = results
-          .map((countryData, index) => {
-            const country = countryData[0];
-            if (!country) return null;
+          .map((country, index) => {
+            if (!country || !country.country) return null;
+
             return {
               id: (index + 1).toString(),
-              name: country.capital[0],
+              name: country.country, 
               country: {
-                name: country.name.common,
-                capital: country.capital[0],
-                region: country.region,
+                name: country.country,
+                capital: country.name || "",
+                region: "",
               },
               notes: "",
               visited: false,
+              dateFrom: "",
+              dateTo: "",
             };
           })
           .filter(Boolean);
