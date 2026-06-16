@@ -1,7 +1,7 @@
 import "./DestinationCard.css";
 import React from "react";
 
-const UNSPLASH_KEY = "lF-30YwQgDHEoRbf18wtS5oIp98mXejXn6BUVnA8Lro";
+const UNSPLASH_KEY = import.meta.env.VITE_UNSPLASH_KEY;
 
 export default function DestinationCard({
   destination,
